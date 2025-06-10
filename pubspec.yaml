@@ -1,0 +1,49 @@
+name: native_shared_preferences
+description: This packages is a copy of the shared_prefrences package but without the prefix in the keys. Is used to migrate the data from previous native app.
+version: 2.0.10
+homepage: https://github.com/yeniel/native_shared_preferences
+
+environment:
+  sdk: ">=2.12.0 <4.0.0"
+  flutter: ">=1.12.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  meta: ^1.9.1
+  shared_preferences: ^2.2.2
+  shared_preferences_platform_interface: ^2.3.1
+  # The design on https://flutter.dev/go/federated-plugins was to leave
+  # this constraint as "any". We cannot do it right now as it fails pub publish
+  # validation, so we set a ^ constraint.
+  # TODO(franciscojma): Revisit this (either update this part in the  design or the pub tool).
+  # https://github.com/flutter/flutter/issues/46264
+  shared_preferences_linux: ^2.3.2
+  shared_preferences_macos: ^2.0.5
+  shared_preferences_web: ^2.2.1
+  shared_preferences_windows: ^2.3.2
+  file: ^7.0.0
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: yeniellandestoy.native_shared_preferences
+        pluginClass: NativeSharedPreferencesPlugin
+      ios:
+        pluginClass: NativeSharedPreferencesPlugin
+      linux:
+        default_package: shared_preferences_linux
+      macos:
+        default_package: shared_preferences_macos
+      web:
+        default_package: shared_preferences_web
+      windows:
+        default_package: shared_preferences_windows
+
